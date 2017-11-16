@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -20,14 +19,14 @@ public class GirdDropDownAdapter extends BaseAdapter {
     private List<String> list;
     private int checkItemPosition = 0;
 
-    public void setCheckItem(int position) {
-        checkItemPosition = position;
-        notifyDataSetChanged();
-    }
-
     public GirdDropDownAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
+    }
+
+    public void setCheckItem(int position) {
+        checkItemPosition = position;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -63,10 +62,13 @@ public class GirdDropDownAdapter extends BaseAdapter {
         viewHolder.mText.setText(list.get(position));
         if (checkItemPosition != -1) {
             if (checkItemPosition == position) {
-                viewHolder.mText.setTextColor(context.getResources().getColor(R.color.drop_down_selected));
-                viewHolder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, context.getResources().getDrawable(R.mipmap.drop_down_checked), null);
+                viewHolder.mText.setTextColor(context.getResources().getColor(R.color
+                        .drop_down_selected));
+                viewHolder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, context
+                        .getResources().getDrawable(R.mipmap.drop_down_checked), null);
             } else {
-                viewHolder.mText.setTextColor(context.getResources().getColor(R.color.drop_down_unselected));
+                viewHolder.mText.setTextColor(context.getResources().getColor(R.color
+                        .drop_down_unselected));
                 viewHolder.mText.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
             }
         }
